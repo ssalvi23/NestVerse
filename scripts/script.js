@@ -69,3 +69,25 @@ gsap.to(particle, {
 });
 });
 
+// Parallax Effect on Mouse Move
+document.addEventListener('mousemove', (e) => {
+const image = document.querySelector('.parallax-image'); // Target the image directly
+const rect = image.getBoundingClientRect();
+const x = e.clientX - rect.left; // Mouse X relative to image
+const y = e.clientY - rect.top;  // Mouse Y relative to image
+
+// Calculate rotation angles
+const rotateX = -(y - rect.height / 2) / 20;
+const rotateY = (x - rect.width / 2) / 20;
+
+// Apply the transform directly to the image
+image.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+});
+
+// Reset the effect on mouse leave
+document.querySelector('.parallax-image').addEventListener('mouseleave', () => {
+const image = document.querySelector('.parallax-image');
+image.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+});
+
+
