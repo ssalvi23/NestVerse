@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtualReality Estates</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            color: #e2e8f0;
+        }
+
+      
+
+        .glassmorphism {
+    background: rgba(139, 137, 137, 0.278);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    position: relative;
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #FFD700, #FF6A00);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #FFD700;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+        /* About section styles */
+        .about-card {
+            background: linear-gradient(145deg, rgba(18, 18, 18, 0.9), rgba(30, 30, 30, 0.9));
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .stat-card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        .about-image {
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #FFD700, #FF6A00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            background: linear-gradient(145deg, #121212, #1e1e1e);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(10deg);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(45deg, #FFD700, #FF6A00);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(45deg, #FF6A00, #FFD700);
+            transform: translateY(-2px);
+        }
+
+        .input-style {
+            background: rgba(18, 18, 18, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+
+        .input-style:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+
+        .gallery-item {
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .scroll-indicator {
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(20px); opacity: 0; }
+        }
+
+        .video-properties {
+            width: 850px;
+            height: 500px;
+            margin-left: 12rem;
+        }
+
+        .parallax-bg {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(45deg, #FFD700, #FF6A00);
+        }
+
+
+        /* About section styles */
+        .about-card {
+            background: linear-gradient(145deg, rgba(18, 18, 18, 0.9), rgba(30, 30, 30, 0.9));
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .stat-card {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        .about-image {
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+       
+       /* Parallax Container Styling */
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    background-image: url('your-background-image.jpg'); /* Add your parallax background */
+    background-size: cover;
+    background-position: center;
+    height: 500px; /* Adjust the height as needed */
+}
+
+/* Floating Effect for Image */
+.floating {
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Parallax Container Styling */
+.parallax-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+/* Image Styling */
+.parallax-image {
+    width: 500px; /* Adjust the width */
+    height: 500px;
+    transition: transform 0.2s ease-in-out;
+    transform-style: preserve-3d; /* Enables 3D transform for the image */
+}
+
+    </style>
+</head>
+<body class="text-gray-200">
+    <!-- Modified Navbar -->
+    <nav class="glassmorphism fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-3xl font-bold text-gradient">NestVerse</div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#gallery" class="nav-link">ShowCase</a>
+                    <a href="#contact" class="nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bg-gradient-to-t from-black to-gray-900 min-h-screen relative flex items-center">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="lg:w-1/2 space-y-8">
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                        Experience Virtual Reality
+                        <span class="text-gradient">Like Never Before</span>
+                    </h1>
+                    <p class="text-xl text-gray-300">
+                        Step into immersive virtual worlds with our cutting-edge VR technology.
+                    </p>
+                    <div class="flex gap-4">
+                        <button class="btn-gradient px-8 py-4 rounded-full text-white font-semibold">
+                            Start Tour
+                        </button>
+                        <button class="px-8 py-4 border border-gold rounded-full font-semibold hover:bg-gold hover:text-gray-900 transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="parallax-container">
+                    <img src="images/dd.png" alt="VR Headset" class="floating" />
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="bg-gradient-to-t from-gray-900 to-black py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-gradient">
+                Revolutionary Features
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="card-3d p-8 rounded-2xl">
+                    <div class="text-gold text-5xl mb-4">🏠</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gold">3D Walkthroughs</h3>
+                    <p>Experience properties in stunning 3D detail</p>
+                </div>
+                <div class="card-3d p-8 rounded-2xl">
+                    <div class="text-gold text-5xl mb-4">🌟</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gold">Virtual Staging</h3>
+                    <p>See spaces with different furniture styles</p>
+                </div>
+                <div class="card-3d p-8 rounded-2xl">
+                    <div class="text-gold text-5xl mb-4">📱</div>
+                    <h3 class="text-2xl font-bold mb-4 text-gold">Mobile Access</h3>
+                    <p>Tour properties from anywhere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="bg-gradient-to-b from-gray-900 to-black py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-gradient">
+                Virtual Showcase
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="gallery-item rounded-2xl overflow-hidden">
+                    <img src="1.jpg" alt="Property 1" class="w-full h-64 object-cover"/>
+                    <div class="p-4 glassmorphism">
+                        <h3 class="text-xl font-bold text-gold">Bed Room</h3>
+                        <p class="text-gray-400">4 Beds • 3 Baths • 2,500 sqft</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden">
+                    <img src="2.jpg" alt="Property 2" class="w-full h-64 object-cover"/>
+                    <div class="p-4 glassmorphism">
+                        <h3 class="text-xl font-bold text-gold">Living Room </h3>
+                        <p class="text-gray-400">2 Beds • 2 Baths • 1,200 sqft</p>
+                    </div>
+                </div>
+                <div class="gallery-item rounded-2xl overflow-hidden">
+                    <img src="3.jpg" alt="Property 3" class="w-full h-64 object-cover"/>
+                    <div class="p-4 glassmorphism">
+                        <h3 class="text-xl font-bold text-gold">Study Room </h3>
+                        <p class="text-gray-400">3 Beds • 3 Baths • 3,000 sqft</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="bg-gradient-to-b from-black to-gray-900  video-section py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold sm:text-4xl text-gradient">Explore Our Luxury Villa</h2>
+                <p class="mt-4 text-white-600">Take a virtual tour and experience the elegance and comfort of premium properties.</p>
+            </div>
+    
+            <!-- Video Section -->
+            <div class="relative">
+                <div class="overflow-hidden rounded-xl shadow-lg video-properties">
+                    <!-- Video element -->
+                    <video id="video" class="w-full aspect-video" src="demo_video.MP4" title="Luxury Villa Tour" muted loop>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+    <section id="about" class="bg-gradient-to-t from-black to-gray-900 py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-gradient">About Us</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="">
+                    <img src="about-us-button-about-us-text-template-for-website-about-us-icon-flat-style-vector-removebg-preview.png" alt="Our Team" class="w-full h-100"/>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold mb-4 text-gradient">Revolutionizing Real Estate</h3>
+                        <p class="text-gray-300">
+                            At NestVerse, we're pioneering the future of real estate through cutting-edge virtual reality technology. Our mission is to transform how people experience and interact with properties, making the home-buying journey more immersive and convenient than ever before.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="stat-card p-6 text-center">
+                            <div class="text-2xl font-bold text-gradient mb-2">Comfortable</div>
+                            <div class="text-gray-400">Virtual Tours</div>
+                        </div>
+                        <div class="stat-card p-6 text-center">
+                            <div class="text-4xl font-bold text-gradient mb-2">98%</div>
+                            <div class="text-gray-400">Client Satisfaction</div>
+                        </div>
+                        <div class="stat-card p-6 text-center">
+                            <div class="text-4xl font-bold text-gradient mb-2">50+</div>
+                            <div class="text-gray-400">Cities Covered</div>
+                        </div>
+                        <div class="stat-card p-6 text-center">
+                            <div class="text-4xl font-bold text-gradient mb-2">24/7</div>
+                            <div class="text-gray-400">Support</div>
+                        </div>
+                    </div>
+
+                    <div class="about-card p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-gradient">Why Choose Us?</h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-center">
+                                <span class="text-gold mr-2">✦</span>
+                                Cutting-edge VR technology for immersive property tours
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-gold mr-2">✦</span>
+                                Experienced team of real estate professionals
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-gold mr-2">✦</span>
+                                Comprehensive property insights and analytics
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-12 text-gradient">
+                Get in Touch
+            </h2>
+            <div class="max-w-lg mx-auto">
+                <form class="space-y-6">
+                    <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg input-style" required />
+                    <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg input-style" required />
+                    <textarea placeholder="Your Message" class="w-full p-4 rounded-lg input-style" rows="6" required></textarea>
+                    <button type="submit" class="btn-gradient w-full py-4 rounded-full text-white font-semibold">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-b from-black to-gray-900 pt-20 pb-8">
+        <div class="container mx-auto px-6">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Company Info -->
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-gradient mb-6">NestVerse</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Revolutionizing real estate experiences through cutting-edge virtual reality technology.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#home" class="text-gray-400 hover:text-gold transition-colors">Home</a>
+                        </li>
+                        <li>
+                            <a href="#about" class="text-gray-400 hover:text-gold transition-colors">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#features" class="text-gray-400 hover:text-gold transition-colors">Features</a>
+                        </li>
+                        <li>
+                            <a href="#gallery" class="text-gray-400 hover:text-gold transition-colors">ShowCase</a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3 text-gray-400">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <span>123 Virtual Street, Digital City, 10001</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-gray-400">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center space-x-3 text-gray-400">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@nestverse.com</span>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-white">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get the latest updates</p>
+                    <form class="space-y-4">
+                        <input 
+                            type="email" 
+                            placeholder="Your email address" 
+                            class="w-full p-3 rounded-lg input-style"
+                            required 
+                        />
+                        <button 
+                            type="submit" 
+                            class="w-full btn-gradient py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+    
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">
+                    &copy; 2024 NestVerse. All Rights Reserved.
+                    <!-- <span class="mx-2">|</span>
+                    <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+                    <span class="mx-2">|</span>
+                    <a href="#" class="hover:text-gold transition-colors">Terms of Service</a> -->
+                </p>
+            </div>
+        </div>
+    </footer>
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Parallax effect
+        document.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.card-3d').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.transform = `perspective(1000px) rotateY(${(x - rect.width/2)/20}deg) rotateX(${-(y - rect.height/2)/20}deg)`;
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const videoContainer = document.querySelector('.video-properties');
+        const video = document.querySelector('#video');
+
+        // Function to play the video when hovered
+        videoContainer.addEventListener('mouseenter', () => {
+            video.play();
+        });
+
+        // Function to pause the video when mouse leaves the video container
+        videoContainer.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // Optionally reset the video to the beginning
+        });
+    });
+
+
+
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      
+      const moveX = (clientX - centerX) / 50;
+      const moveY = (clientY - centerY) / 50;
+
+      gsap.to('#headset', {
+        x: moveX,
+        y: moveY,
+        duration: 1,
+        ease: 'power2.out'
+      });
+
+      // Move particles in opposite direction for depth
+      document.querySelectorAll('#particles > div').forEach(particle => {
+        gsap.to(particle, {
+          x: -moveX * 2,
+          y: -moveY * 2,
+          duration: 1,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+// Parallax Effect on Mouse Move
+document.addEventListener('mousemove', (e) => {
+    const image = document.querySelector('.parallax-image'); // Target the image directly
+    const rect = image.getBoundingClientRect();
+    const x = e.clientX - rect.left; // Mouse X relative to image
+    const y = e.clientY - rect.top;  // Mouse Y relative to image
+
+    // Calculate rotation angles
+    const rotateX = -(y - rect.height / 2) / 20;
+    const rotateY = (x - rect.width / 2) / 20;
+
+    // Apply the transform directly to the image
+    image.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+});
+
+// Reset the effect on mouse leave
+document.querySelector('.parallax-image').addEventListener('mouseleave', () => {
+    const image = document.querySelector('.parallax-image');
+    image.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+});
+
+
+    </script>
+</body>
+</html>
