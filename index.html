@@ -251,86 +251,89 @@
 
 
 <!-- about us section -->
-    <section id="about" class="bg-gradient-to-b from-black to-gray-900" data-aos="fade-up">
-        <div class="container mx-auto px-6">
-            <h2 class="text-5xl font-bold text-center mb-16 text-gradient">About Us</h2>
+<section id="about" class="bg-gradient-to-b from-black to-gray-900" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+        <h2 class="text-5xl font-bold text-center mb-16 text-gradient" data-aos="fade-up">About Us</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div data-aos="fade-right" data-aos-delay="200">
+                <img src="images/about-us-button-about-us-text-template-for-website-about-us-icon-flat-style-vector-removebg-preview.png" alt="Our Team" class="w-full h-100"/>
+            </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="">
-                    <img src="images/about-us-button-about-us-text-template-for-website-about-us-icon-flat-style-vector-removebg-preview.png" alt="Our Team" class="w-full h-100"/>
-                </div>
-                
-                <div class="space-y-8">
-                    <div class="p-8 rounded-lg">
-                        <!-- <h3 class="text-3xl font-bold mb-4 text-gradient">Our Vision</h3> -->
-                        <p class="text-gray-300">
-                            At NestVerse, we redefine how real estate is showcased through cutting-edge virtual reality solutions. Specializing in immersive 3D experiences, 360° virtual tours, and digital property transformations, we empower real estate players to captivate their clients with innovative, interactive, and engaging property visualizations.
+            <!-- Right Content -->
+            <div class="space-y-8" data-aos="fade-left" data-aos-delay="400">
+                <div class="p-8 rounded-lg">
+                    <p class="text-gray-300">
+                        At NestVerse, we redefine how real estate is showcased through cutting-edge virtual reality solutions. Specializing in immersive 3D experiences, 360° virtual tours, and digital property transformations, we empower real estate players to captivate their clients with innovative, interactive, and engaging property visualizations.
+                    </p><br>
 
-                            </p><br>
-                            <!-- <h3 class="text-3xl font-bold mb-4 text-gradient">Our Mission</h3> -->
-                            <p>Our mission is to bridge the gap between imagination and reality, making property exploration seamless, convenient, and inspiring. Whether you want to highlight every detail of a new development, create virtual tours from scratch, or digitize existing properties, we deliver tailored solutions to elevate your sales and marketing strategies.
-                            
-                          
-                            
-                                                    </p><br>
-                        <p class="text-gray-300 font-semibold align-center">
-                            Join us in transforming the way properties are experienced—one virtual tour at a time.
-                        </p>
-                    </div> 
+                    <p>Our mission is to bridge the gap between imagination and reality, making property exploration seamless, convenient, and inspiring. Whether you want to highlight every detail of a new development, create virtual tours from scratch, or digitize existing properties, we deliver tailored solutions to elevate your sales and marketing strategies.</p><br>
+
+                    <p class="text-gray-300 font-semibold">
+                        Join us in transforming the way properties are experienced—one virtual tour at a time.
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Don't wait section -->
-    <section class="relative py-10 bg-gradient-to-t from-black to-gray-900 " data-aos="fade-up" id="wait">
+    <section class="relative py-10 bg-gradient-to-t from-black to-gray-900" data-aos="fade-up" id="wait">
         <!-- Animated background elements -->
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/30 rounded-full blur-3xl"></div>
             <div class="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/30 rounded-full blur-3xl"></div>
         </div>
-
-        <div class="container mx-auto px-4 relative">
-            <!-- Main heading -->
-            <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+    
+        <div class="container mx-auto px-4 relative flex items-center justify-between">
+            <!-- Main content (left aligned) -->
+            <div class="max-w-4xl text-left mb-16 ml-20" data-aos="fade-right">
                 <h2 class="text-5xl md:text-6xl font-bold mb-6" style="background: linear-gradient(90deg, #FFD700, #FF6A00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                     Don't Wait....
                 </h2>
                 <div class="w-24 h-1 mx-auto mb-8" style="background: linear-gradient(90deg, #FFD700, #FF6A00)"></div>
                 <p class="text-xl md:text-2xl text-gray-300 mb-4">
                     Create Your Virtual Sample Flat Within 15 Days!! <br>
-                   <p class="text-xl"> Get Free Demo at Your Office</p><br>
+                    <p class="text-xl">Get Free Demo at Your Office</p><br>
                 </p>
-                <div class="flex flex-col items-center text-gray-300 space-y-4">
+                <div class="flex flex-col items-start text-gray-300 space-y-4">
                     <!-- Call Us -->
-                    <div class="flex items-center">
+                    <div class="flex items-center" data-aos="fade-up" data-aos-delay="200">
                         <svg class="w-6 h-6 mr-2" style="color: #FFD700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
                         <a href="tel:+1234567890" class="inline-block text-gradient font-bold">Call Us →</a>
                     </div>
-                
+    
                     <!-- Schedule Demo -->
-                    <div class="flex items-center">
+                    <div class="flex items-center" data-aos="fade-up" data-aos-delay="300">
                         <svg class="w-6 h-6 mr-2" style="color: #FFD700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
-                        <a href="#schedule-demo"  onclick="openModal()" class="inline-block text-gradient font-bold">Schedule Demo →</a>
+                        <a href="#schedule-demo" onclick="openModal()" class="inline-block text-gradient font-bold">Schedule Demo →</a>
                     </div>
-                
+    
                     <!-- Get Quotation -->
-                    <div class="flex items-center">
+                    <div class="flex items-center" data-aos="fade-up" data-aos-delay="400">
                         <svg class="w-6 h-6 mr-2" style="color: #FFD700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
                         <a href="https://wa.me/1234567890?text=Hello,%20I%20would%20like%20to%20get%20a%20quotation." target="_blank" class="inline-block text-gradient font-bold">Get Quotation →</a>
                     </div>
                 </div>
-                
-                
+            </div>
+    
+            <!-- Image (right aligned) -->
+            <div class="hidden md:block w-1/2" data-aos="fade-left" data-aos-delay="500">
+                <img src="images/img1-removebg-preview.png" alt="Virtual Sample Flat" class="w-full h-[400px] object-cover">
             </div>
         </div>
     </section>
+    
+    
 
 <!-- FAQ Section -->
 <section class="py-10 bg-gradient-to-b from-black to-gray-900" id="faq" data-aos="fade-up">
