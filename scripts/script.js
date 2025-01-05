@@ -3,16 +3,6 @@ AOS.init({
     once: true
 });
 
-// Parallax effect
-document.addEventListener('mousemove', (e) => {
-    document.querySelectorAll('.card-3d').forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        card.style.transform = `perspective(1000px) rotateY(${(x - rect.width/2)/20}deg) rotateX(${-(y - rect.height/2)/20}deg)`;
-    });
-});
 
 // Smooth scrolling for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -25,69 +15,119 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-const videoContainer = document.querySelector('.video-properties');
-const video = document.querySelector('#video');
+function openModal() {
+    const modal = document.getElementById('appointmentModal');
+    const modalContent = document.getElementById('modalContent');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    setTimeout(() => {
+        modalContent.classList.add('opacity-100');
+    }, 50);
+}
 
-// Function to play the video when hovered
-videoContainer.addEventListener('mouseenter', () => {
-    video.play();
+function closeModal() {
+    const modal = document.getElementById('appointmentModal');
+    const modalContent = document.getElementById('modalContent');
+    const successModal = document.getElementById('successModal');
+    
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    modalContent.classList.remove('hidden');
+    successModal.classList.add('hidden');
+}
+
+function showSuccess() {
+    const modalContent = document.getElementById('modalContent');
+    const successModal = document.getElementById('successModal');
+    
+    modalContent.classList.add('hidden');
+    successModal.classList.remove('hidden');
+    
+    // Auto close after 3 seconds
+    setTimeout(closeModal, 3000);
+}
+
+document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showSuccess();
 });
 
-// Function to pause the video when mouse leaves the video container
-videoContainer.addEventListener('mouseleave', () => {
-    video.pause();
-    video.currentTime = 0; // Optionally reset the video to the beginning
-});
-});
-
-
-
-document.addEventListener('mousemove', (e) => {
-const { clientX, clientY } = e;
-const centerX = window.innerWidth / 2;
-const centerY = window.innerHeight / 2;
-
-const moveX = (clientX - centerX) / 50;
-const moveY = (clientY - centerY) / 50;
-
-gsap.to('#headset', {
-x: moveX,
-y: moveY,
-duration: 1,
-ease: 'power2.out'
+// Close if clicked outside
+document.getElementById('appointmentModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
 });
 
-// Move particles in opposite direction for depth
-document.querySelectorAll('#particles > div').forEach(particle => {
-gsap.to(particle, {
-  x: -moveX * 2,
-  y: -moveY * 2,
-  duration: 1,
-  ease: 'power2.out'
-});
-});
+// popup
+function showConfirmation(event) {
+    event.preventDefault(); // Prevent form submission
+    document.getElementById('appointmentModal').classList.add('hidden'); // Hide the appointment modal
+    document.getElementById('confirmationPopup').classList.remove('hidden'); // Show the confirmation popup
+}
+
+function closeModal() {
+    document.getElementById('appointmentModal').classList.add('hidden');
+}
+
+function closeConfirmationPopup() {
+    document.getElementById('confirmationPopup').classList.add('hidden');
+}
+
+
+// Hamburger and close button logic
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+// Toggle the mobile menu when the hamburger button is clicked
+hamburger.addEventListener('click', () => {
+    // Toggle visibility of the mobile menu
+    mobileMenu.classList.toggle('hidden');  // Toggle mobile menu visibility
+    mobileMenu.classList.toggle('translate-y-0');  // Toggle slide-in animation
+
+    // Toggle the hamburger icon to an "X" and vice versa
+    hamburgerIcon.classList.toggle('open');  // Apply or remove the "X" effect
 });
 
-// Parallax Effect on Mouse Move
-document.addEventListener('mousemove', (e) => {
-const image = document.querySelector('.parallax-image'); // Target the image directly
-const rect = image.getBoundingClientRect();
-const x = e.clientX - rect.left; // Mouse X relative to image
-const y = e.clientY - rect.top;  // Mouse Y relative to image
-
-// Calculate rotation angles
-const rotateX = -(y - rect.height / 2) / 20;
-const rotateY = (x - rect.width / 2) / 20;
-
-// Apply the transform directly to the image
-image.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-});
-
-// Reset the effect on mouse leave
-document.querySelector('.parallax-image').addEventListener('mouseleave', () => {
-const image = document.querySelector('.parallax-image');
-image.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+// Optional: Close the menu if clicked outside
+document.addEventListener('click', (e) => {
+    // Check if the click was outside the mobile menu or hamburger button
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('translate-y-0');
+        hamburgerIcon.classList.remove('open');
+    }
 });
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const faqButtons = document.querySelectorAll('.faq-btn');
+    
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get the content panel for this button
+            const content = button.nextElementSibling;
+            const arrow = button.querySelector('svg');
+            
+            // Close all other FAQs
+            faqButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    const otherContent = otherButton.nextElementSibling;
+                    const otherArrow = otherButton.querySelector('svg');
+                    otherContent.classList.add('hidden');
+                    otherArrow.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            content.classList.toggle('hidden');
+            if (!content.classList.contains('hidden')) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+});
