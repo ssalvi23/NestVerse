@@ -62,7 +62,7 @@
             outline: none;
         }
     </style>
-     <script src="scripts/script.js"></script>
+   
 </head>
 <body class="bg-gradient-to-br from-gray-800 to-black min-h-screen text-white">
     <!-- Header/Navigation -->
@@ -408,14 +408,14 @@
                 <div>
                     <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li><i class="fas fa-envelope mr-2"></i> info@premium.com</li>
+                        <li><i class="fas fa-envelope mr-2"></i> nestverse.com</li>
                         <li><i class="fas fa-phone mr-2"></i> +1 234 567 890</li>
-                        <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Business Street, City</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Pune, Maharashtra/li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-700 pt-8 text-center text-gray-300">
-                <p>&copy; 2024 Premium. All rights reserved.</p>
+                <p>&copy; 2025 NestVerse. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -424,4 +424,97 @@
     
    
 </body>
+<script>
+  function openModal() {
+const modal = document.getElementById('appointmentModal');
+const modalContent = document.getElementById('modalContent');
+modal.classList.remove('hidden');
+modal.classList.add('flex');
+setTimeout(() => {
+    modalContent.classList.add('opacity-100');
+}, 50);
+}
+
+function closeModal() {
+const modal = document.getElementById('appointmentModal');
+const modalContent = document.getElementById('modalContent');
+const successModal = document.getElementById('successModal');
+
+modal.classList.remove('flex');
+modal.classList.add('hidden');
+modalContent.classList.remove('hidden');
+successModal.classList.add('hidden');
+}
+
+function showSuccess() {
+const modalContent = document.getElementById('modalContent');
+const successModal = document.getElementById('successModal');
+
+modalContent.classList.add('hidden');
+successModal.classList.remove('hidden');
+
+// Auto close after 3 seconds
+setTimeout(closeModal, 3000);
+}
+
+document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+e.preventDefault();
+showSuccess();
+});
+
+// Close if clicked outside
+document.getElementById('appointmentModal').addEventListener('click', function(e) {
+if (e.target === this) {
+    closeModal();
+}
+});
+
+// popup
+function showConfirmation(event) {
+event.preventDefault(); // Prevent form submission
+document.getElementById('appointmentModal').classList.add('hidden'); // Hide the appointment modal
+document.getElementById('confirmationPopup').classList.remove('hidden'); // Show the confirmation popup
+}
+
+function closeModal() {
+document.getElementById('appointmentModal').classList.add('hidden');
+}
+
+function closeConfirmationPopup() {
+document.getElementById('confirmationPopup').classList.add('hidden');
+}
+
+function setDefaultDateTime() {
+const dateInput = document.getElementById('appointmentDate');
+const timeInput = document.getElementById('appointmentTime');
+
+// Get today's date
+const today = new Date();
+let nextWorkingDay = new Date(today);
+
+// Find the next working day (Monday to Friday)
+if (nextWorkingDay.getDay() === 5) {
+    // If it's Friday, set to Monday
+    nextWorkingDay.setDate(nextWorkingDay.getDate() + 3);
+} else if (nextWorkingDay.getDay() === 6) {
+    // If it's Saturday, set to Monday
+    nextWorkingDay.setDate(nextWorkingDay.getDate() + 2);
+} else {
+    // Otherwise, set to next day
+    nextWorkingDay.setDate(nextWorkingDay.getDate() + 1);
+}
+
+// Format the date to yyyy-mm-dd
+const formattedDate = nextWorkingDay.toISOString().split('T')[0];
+
+// Set the date and time to default (next working day and 11:00 AM)
+dateInput.value = formattedDate;
+timeInput.value = '11:00';
+}
+
+// Set default date and time when modal is shown
+document.addEventListener('DOMContentLoaded', setDefaultDateTime);
+
+
+ </script>
 </html>
