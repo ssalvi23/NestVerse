@@ -129,3 +129,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+function setDefaultDateTime() {
+    const dateInput = document.getElementById('appointmentDate');
+    const timeInput = document.getElementById('appointmentTime');
+
+    // Get today's date
+    const today = new Date();
+    let nextWorkingDay = new Date(today);
+
+    // Find the next working day (Monday to Friday)
+    if (nextWorkingDay.getDay() === 5) {
+        // If it's Friday, set to Monday
+        nextWorkingDay.setDate(nextWorkingDay.getDate() + 3);
+    } else if (nextWorkingDay.getDay() === 6) {
+        // If it's Saturday, set to Monday
+        nextWorkingDay.setDate(nextWorkingDay.getDate() + 2);
+    } else {
+        // Otherwise, set to next day
+        nextWorkingDay.setDate(nextWorkingDay.getDate() + 1);
+    }
+
+    // Format the date to yyyy-mm-dd
+    const formattedDate = nextWorkingDay.toISOString().split('T')[0];
+
+    // Set the date and time to default (next working day and 11:00 AM)
+    dateInput.value = formattedDate;
+    timeInput.value = '11:00';
+}
+
+// Set default date and time when modal is shown
+document.addEventListener('DOMContentLoaded', setDefaultDateTime);
